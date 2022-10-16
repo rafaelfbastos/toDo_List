@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_list/app/core/database/sqlite_connection_factory.dart';
+import 'package:todo_list/app/core/widgets/todo_list_field.dart';
+import 'package:todo_list/app/core/widgets/todo_list_logo.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -19,21 +21,22 @@ class LoginPage extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 80,
                   ),
-                  Image.asset(
-                    "assets/logo.png",
-                    height: 200,
-                  ),
+                  const TodoListLogo(),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 30),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 40, vertical: 30),
                     child: Form(
                         child: Column(
                       children: [
-                        TextField(),
+                        TodoListField(label: "E-mail"),
                         const SizedBox(height: 20),
-                        TextFormField(),
+                        TodoListField(
+                          label: "Senha",
+                          obscureText: true,
+                        ),
                         const SizedBox(
                           height: 10,
                         ),
@@ -44,16 +47,14 @@ class LoginPage extends StatelessWidget {
                                 onPressed: (() {}),
                                 child: const Text("Esqueceu a senha?")),
                             ElevatedButton(
-                              onPressed: (() {
-                                context.read<SqliteConnectionFactory>().openConnection();
-                              }),
+                              onPressed: (() {}),
+                              style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20))),
                               child: const Padding(
                                 padding: EdgeInsets.all(10),
                                 child: Text("Login"),
                               ),
-                              style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20))),
                             )
                           ],
                         )
@@ -87,9 +88,12 @@ class LoginPage extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Não tem conta?"),
+                            const Text("Não tem conta?"),
                             TextButton(
-                                onPressed: (() {}), child: Text("Cadastre-se"))
+                                onPressed: (() {
+                                  Navigator.of(context).pushNamed("/register");
+                                }),
+                                child: const Text("Cadastre-se"))
                           ],
                         )
                       ]),

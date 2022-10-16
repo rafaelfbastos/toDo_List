@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "662595879428",
+    "project_id": "to-do-list-ff66d",
+    "storage_bucket": "to-do-list-ff66d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662595879428:android:7827d96b0a8accf9866b51",
+        "android_client_info": {
+          "package_name": "br.com.rgb.todo_list"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "662595879428-bjlt5au5gs6njtm71vhnrhkojd4hnnuu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNyhu_Q6w0bc4x-7Mx4hnrFFdqFfWj61g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "662595879428-bjlt5au5gs6njtm71vhnrhkojd4hnnuu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
