@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_list/app/core/ui/theme_extencsions.dart';
+import 'package:todo_list/app/core/notifier/default_listerner_notifier.dart';
+import 'package:todo_list/app/core/ui/theme_extensions.dart';
 import 'package:todo_list/app/core/widgets/todo_list_field.dart';
 import 'package:todo_list/app/core/widgets/todo_list_logo.dart';
 import 'package:todo_list/app/modules/auth/register/register_controller.dart';
@@ -24,28 +25,20 @@ class _RegisterPageState extends State<RegisterPage> {
     super.dispose();
     _emailEC.dispose();
     _passwordConfirmEC.dispose();
-    _passwordConfirmEC.dispose();
-    context.read<RegisterController>().removeListener(() {});
   }
 
   @override
   void initState() {
     super.initState();
-
-    context.read<RegisterController>().addListener(() {
-      final controller = context.read<RegisterController>();
-      var success = controller.success;
-      var error = controller.error;
-
-      if (success) {
+    final defaultListener = DefaultListernerNotifier(
+        changeNotifier: context.read<RegisterController>());
+    defaultListener.listener(
+      context: context,
+      successCallBack: (notifier, listernerInstance) {
         Navigator.of(context).pop();
-      } else if (error != null && error.isNotEmpty) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(error),
-          backgroundColor: Colors.red,
-        ));
-      }
-    });
+        listernerInstance.dispose();
+      },
+    );
   }
 
   @override
