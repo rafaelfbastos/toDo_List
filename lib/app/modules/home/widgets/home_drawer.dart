@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
-import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_list/app/core/auth/auth_provider.dart';
-import 'package:todo_list/app/core/ui/messages.dart';
 import 'package:todo_list/app/core/ui/theme_extensions.dart';
 import 'package:todo_list/app/services/user/user_service.dart';
 
