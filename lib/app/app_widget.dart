@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list/app/core/database/sqlite_adm_connection.dart';
+import 'package:todo_list/app/core/navigator/todo_list_navigator.dart';
 import 'package:todo_list/app/core/ui/todo_list_ui_config.dart';
 import 'package:todo_list/app/modules/auth/auth_module.dart';
+import 'package:todo_list/app/modules/home/home_module.dart';
+import 'package:todo_list/app/modules/splash/splash_page.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -29,9 +32,13 @@ class _AppWidgetState extends State<AppWidget> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "ToDo List",
+      navigatorKey: TodoListNavigator.navigatorKey,
       theme: TodoListUiConfig.theme,
-      routes: {...AuthModule().routers},
-      initialRoute: "/login",
+      routes: {
+        ...AuthModule().routers,
+        ...HomeModule().routers,
+      },
+      home: SplashPage(),
     );
   }
 }

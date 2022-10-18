@@ -16,9 +16,9 @@ class RegisterController extends DefaultNotifier {
       showLoadingAndResetState();
       notifyListeners();
       final user = await _userService.register(email, password);
-      (user != null) ? success() : setError("Erro ao registrar usuário");
-    } on AuthException catch (e) {
-      setError(e.message);
+      (user != null) ? success() : null;
+    } on Exception catch (e) {
+      print(e);
     } finally {
       hideLoading();
       notifyListeners();

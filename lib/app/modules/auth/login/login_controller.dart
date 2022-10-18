@@ -43,4 +43,29 @@ class LoginController extends DefaultNotifier {
       notifyListeners();
     }
   }
+
+  Future<void> googleLogin() async {
+    try {
+      showLoadingAndResetState();
+      notifyListeners();
+      infoMessage = null;
+      final user = await _userService.googleLogin();
+      if (user != null) {
+        success();
+      } else {
+        setError("Erro ao logar");
+      }
+    } on Exception catch (e) {
+      if (e is AuthException) {
+        setError(e.message);
+      }
+    } finally {
+      hideLoading();
+      notifyListeners();
+    }
+  }
+
+  Future<void> logout() async {
+    await _userService.logout();
+  }
 }
