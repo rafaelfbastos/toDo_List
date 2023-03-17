@@ -80,7 +80,7 @@ class HomeController extends DefaultNotifier {
     }
 
     if (!showFinishingTasks) {
-      filteredTasks = filteredTasks.where((task) => task.finished).toList();
+      filteredTasks = filteredTasks.where((task) => !task.finished).toList();
     }
     hideLoading();
     notifyListeners();

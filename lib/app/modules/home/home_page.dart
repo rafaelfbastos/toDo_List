@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
             }),
             itemBuilder: ((context) => [
                   PopupMenuItem<bool>(
-                    value: true,
+                    value: false,
                     child: Text(
                         "${widget._homeController.showFinishingTasks ? 'Esconder' : 'Mostrar'} tarefas concluidas"),
                   )
